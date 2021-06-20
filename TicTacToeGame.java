@@ -11,6 +11,7 @@ public class TicTacToeGame {
     public static void main(String[] args) {
         //calling method here
         creatingBoard();
+        //calling playerOption method
         playerChoice();
     }
     //creating a method for main
@@ -19,6 +20,7 @@ public class TicTacToeGame {
             board[i] = '-';
         }
     }
+    //creating method for choosing option
     static void playerChoice() {
         System.out.println("choose an option x or o");
          player = sc.next().charAt(0);
