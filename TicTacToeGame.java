@@ -11,8 +11,8 @@ public class TicTacToeGame {
     }
     //creating a method for main
     static void creatingBoard() {
-        for(int i=0;i<10; i++) {
-            board[i]='-';
+        for(int i=0; i<10; i++) {
+            board[i]=' ';
         }
     }
 }
