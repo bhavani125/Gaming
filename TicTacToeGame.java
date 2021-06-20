@@ -18,6 +18,8 @@ public class TicTacToeGame {
         currentBoard();
         //calling player move method
         userMove();
+        //calling desired move method
+        desiredMove();
     }
 
     //creating a method for main
@@ -65,8 +67,9 @@ public class TicTacToeGame {
 
     // creating method for user to move
     static void userMove() {
-        System.out.println("User to select the index from 1to9");
+        System.out.println("User to select the number from 1to9");
         int userChoice = sc.nextInt();
+        //checking free space available or not
         if (board[userChoice] != 'x' && board[userChoice] != 'o') {
             board[userChoice] = player;
         } else {
@@ -74,5 +77,11 @@ public class TicTacToeGame {
         }
         //calling current board method
         currentBoard();
+    }
+
+    //creating a method for user move to check free space
+    static void desiredMove() {
+    //calling userMove method here because the condition is same
+        userMove();
     }
 }
