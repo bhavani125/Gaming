@@ -13,6 +13,8 @@ public class TicTacToeGame {
         creatingBoard();
         //calling playerOption method
         playerChoice();
+        //calling current board method
+        currentBoard();
     }
     //creating a method for main
     static void creatingBoard() {
@@ -30,6 +32,29 @@ public class TicTacToeGame {
             computer ='x';
         }
     }
+    //creating a method to show empty board
+    static void showBoard() {
 
+        System.out.println("     |     |     ");
+        System.out.println("  " + board[1] + "  | " + board[2]  + "   | " + board[3] + "  ");
+        System.out.println(".....|.....|.....");
+        System.out.println("     |     |     ");
+        System.out.println("  " + board[4] + "  | " + board[5]  + "   | " + board[6] + "  ");
+        System.out.println(".................");
+        System.out.println("     |     |     ");
+        System.out.println("  " + board[7] + "  | " + board[8]  + "   | " + board[9] + "  ");
+
+    }
+    //writing a method to show current board
+    private static void currentBoard() {
+        int RADIX = 10;
+        System.out.println("\n");
+        for( int i=1; i<10; i++) {
+            if (board[i] !='x'&&board[i] !='o')
+                board[i] = Character.forDigit(i, RADIX);
+        }
+        //calling show board method  here
+        showBoard();
+    }
 }
 
