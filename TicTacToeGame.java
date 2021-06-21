@@ -1,12 +1,15 @@
 package com.game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToeGame {
     //constant variable
     static char[] board = new char[10];
+     static int[] computerNum;
     static char player, computer;
     public static Scanner sc = new Scanner(System.in);
+    static final Random random = new Random();
 
     //main method
     public static void main(String[] args) {
@@ -16,10 +19,10 @@ public class TicTacToeGame {
         playerChoice();
         //calling current board method
         currentBoard();
-        //calling player move method
-        userMove();
         //calling desired move method
         desiredMove();
+        //calling method for who will play first
+         whoPlayFirst();
     }
 
     //creating a method for main
@@ -67,7 +70,7 @@ public class TicTacToeGame {
 
     // creating method for user to move
     static void userMove() {
-        System.out.println("User to select the number from 1to9");
+        System.out.println("\nUser to select the number from 1to9:\n");
         int userChoice = sc.nextInt();
         //calling current board method
         currentBoard();
@@ -79,7 +82,7 @@ public class TicTacToeGame {
 
     //creating a method for user move and  checking free space
     static void desiredMove() {
-        System.out.println("User to select the number from 1to9");
+        System.out.println("User to select the number from 1 o 9");
         int userChoice = sc.nextInt();
         if (board[userChoice] != 'x' || board[userChoice] != 'o') {
             board[userChoice] = player;
@@ -90,4 +93,35 @@ public class TicTacToeGame {
         currentBoard();
         userMove();
     }
-}
+
+    static void whoPlayFirst() {
+        System.out.println("\nMaking toss to check who play first\n\nselect the number 1 for head and 2 for tail\n ");
+        int check = sc.nextInt();
+        if (check == 1 || check == 2) {
+            int flip = random.nextInt(2) + 1;
+            if (flip == 1) {
+                System.out.println("\nBy tossing Coin it shows HEAD\n");
+            } else {
+                System.out.println("\nBy tossing Coin it shows TAIL\n");
+            }
+            if (flip == check) {
+                System.out.println("u won the toss then You have to start the game\n");
+                desiredMove();
+            } else {
+                System.out.println(" You lost the toss now its computer turn first\n");
+                computerMove();
+            }
+        } else {
+            System.out.println("\nInvalid input Again\n");
+           whoPlayFirst();
+        }
+    }
+         //creating  for computer move
+         static void computerMove() {
+            computerNum = new int[9];
+            int  computerChoice = random.nextInt(9)+1;
+            board[computerChoice]=computer;
+            System.out.println("the computer choice "+computerChoice+"' now its your turn.");
+            desiredMove();
+        }
+    }
